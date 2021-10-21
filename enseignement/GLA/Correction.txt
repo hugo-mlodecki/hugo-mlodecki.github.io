@@ -1,0 +1,26 @@
+ 1  Echec   Ajouter lève toujours une exception
+ 2  Succès
+ 3  Echec   Le redimensionnement d'un conteneur plein ne change
+            pas sa capacité (mais ne lève pas d'exception)
+ 4  Echec   Met la capacité à 0 lors de la remise à zéro
+ 5  Echec*  L'ajout d'éléments après une remise à zéro fait
+            réapparaitre les éléments supprimés (difficile)
+ 6  Echec   Permet le redimensionnement dans l'état non plein
+ 7  Echec   Ajoute un élément déjà présent au lieu de l'écraser
+ 8  Echec*  Permet la duplication des clés (difficile)
+ 9  Succès
+10  Echec   Permet l'ajout d'un nouvel élément dans l'état plein
+            sans lever d'exception
+11  Echec   Lève l'exception ArrayIndexOutOfBounds au lieu de
+            DebordementConteneur lors de l'ajout dans l'état plein
+12  Echec   Retirer lève une exception
+            Ne lève pas la bonne exception lors de l'ajout d'un
+            élément absent dans l'état plein
+            Met la capacité à 0 lors d'une remise à zéro
+13  Echec*  Permet la duplication des clés (difficile)
+14  Succès
+15  Echec   La remise à zéro conserve les éléments
+16  Succès
+17  Succès
+
+* faute difficile à trouver
