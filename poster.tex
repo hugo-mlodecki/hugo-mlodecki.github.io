@@ -1,0 +1,184 @@
+% --------------------------------------------------------------------------- %
+% Poster for the ECCS 2011 Conference about Elementary Dynamic Networks.      %
+% --------------------------------------------------------------------------- %
+% Created with Brian Amberg's LaTeX Poster Template. Please refer for the     %
+% attached README.md file for the details how to compile with `pdflatex`.     %
+% --------------------------------------------------------------------------- %
+% $LastChangedDate:: 2011-09-11 10:57:12 +0200 (V, 11 szept. 2011)          $ %
+% $LastChangedRevision:: 128                                                $ %
+% $LastChangedBy:: rlegendi                                                 $ %
+% $Id:: poster.tex 128 2011-09-11 08:57:12Z rlegendi                        $ %
+% --------------------------------------------------------------------------- %
+\documentclass[a0paper,portrait]{baposter}
+\usepackage[utf8x]{inputenc}
+
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{shuffle}
+\usepackage{tikz}
+\usetikzlibrary{shapes}
+\usetikzlibrary{snakes}
+
+
+\usepackage{graphicx,wrapfig,lipsum}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\crefname{coro}{Corollary}{Corollaries}
+\crefname{defi}{Definition}{Definitions}
+\crefname{lem}{Lemma}{Lemmas}
+\crefname{algocf}{Algorithm}{Algorithms}
+\crefname{ex}{Example}{Examples}
+\crefname{rem}{Remark}{Remarks}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lem}[theorem]{Lemma}
+\newtheorem{conj}[theorem]{Conjecture}
+\newtheorem{coro}[theorem]{Corollary}
+\newtheorem{prop}[theorem]{Proposition}
+\newtheorem{prob}{Problem}
+
+\theoremstyle{definition}
+\newtheorem{defi}[theorem]{Definition}
+\newtheorem{fact}[theorem]{Fact}
+\theoremstyle{remark}
+\newtheorem{ex}[theorem]{Example}
+\newtheorem{rem}[theorem]{Remark}
+\newtheorem{nota}[theorem]{Notations}
+
+\usepackage{relsize}		% For \smaller
+\usepackage{url}			% For \url
+% \usepackage{epstopdf}	% Included EPS files automatically converted to PDF to include with pdflatex
+
+%%% Global Settings %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\graphicspath{{pix/}}	% Root directory of the pictures 
+% \tracingstats=2			% Enabled LaTeX logging with conditionals
+
+%%% Color Definitions %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\definecolor{bordercol}{RGB}{40,40,40}
+\definecolor{headercol1}{RGB}{ 195, 222, 234 }% 177, 202, 213 }%  169, 206, 223 }%129, 179, 201}%186,215,230}
+\definecolor{headercol2}{RGB}{  195, 222, 234 }%177, 202, 213 }% 169, 206, 223 }%129, 179, 201}%186,215,230}
+\definecolor{headerfontcol}{RGB}{0,0,0}
+\definecolor{boxcolor}{RGB}{255,255,255}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Utility functions %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% Save space in lists. Use this after the opening of the list %%%%%%%%%%%%%%%%
+\newcommand{\compresslist}{
+  \setlength{\itemsep}{1pt}
+  \setlength{\parskip}{0pt}
+  \setlength{\parsep}{0pt}
+}
+
+\include{newcommands}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Document Start %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\typeout{Poster rendering started}
+
+%%% Setting Background Image %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\background{
+	\begin{tikzpicture}[remember picture,overlay]%
+	\draw (current page.north west)+(-2em,2em) node[anchor=north west]
+	{\includegraphics[height=1.1\textheight]{fond-gris-degrade-clair.jpg}};
+	\end{tikzpicture}
+}
+
+%%% General Poster Settings %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%% Eye Catcher, Title, Authors and University Images %%%%%%%%%%%%%%%%%%%%%%
+\begin{poster}{
+	grid=false,
+	% Option is left on true though the eyecatcher is not used. The reason is
+	% that we have a bit nicer looking title and author formatting in the headercol
+	% this way
+	% eyecatcher=false,
+        linewidth = 1pt,
+	borderColor=bordercol,
+	headerColorOne=headercol1,
+	headerColorTwo=headercol2,
+	headerFontColor=headerfontcol,
+	% Only simple background color used, no shading, so boxColorTwo isn't necessary
+	boxColorOne=boxcolor,
+	headershape=rectangle,%roundedright,
+	headerfont=\Large\sf\bf,
+	textborder=rectangle,
+	background=user,
+	headerborder=open,
+  boxshade=plain
+}
+%%% Eye Cacther %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{
+	Eye Catcher, empty if option eyecatcher=false - unused
+}
+%%% Title %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{\sf\bf
+	Une construction combinatoire d'un automorphisme bidendriphorme de WQSym
+}
+%%% Authors %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{
+	\vspace{1em} Journées Nationales du GDR IM 2022\\ Hugo Mlodecki, \,
+	{\smaller hugo.mlodecki@gmail.com}
+}
+%%% Logo %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{
+% The logos are compressed a bit into a simple box to make them smaller on the result
+% (Wasn't able to find any bigger of them.)
+\setlength\fboxsep{0pt}
+\setlength\fboxrule{0.5pt}
+	\fbox{
+		\begin{minipage}{14em}
+			\includegraphics[width=12.3em,height=5em]{logo-lisn.png}
+			% \includegraphics[width=4em,height=4em]{elte_logo} \\
+			% \includegraphics[width=10em,height=4em]{dynanets_logo}
+			% \includegraphics[width=4em,height=4em]{aitia_logo}
+		\end{minipage}
+	}
+}
+
+\headerbox{Motivation}{name=intro,column=0,row=0}{
+  \vspace{-0.6em} 
+  \include{intro}
+  \vspace{-0.6em}
+}
+\headerbox{Mots tassés}{name=pw,column=0,below=intro}{
+  \vspace{-0.6em} 
+  \include{pw}
+}
+\headerbox{Descentes globales}{name=gd,column=0,below=pw}{
+  \vspace{-0.6em} 
+  \include{gd}
+}
+\headerbox{Nouvelles décompositions}{name=ins,column=0,below=gd, above=bottom}{
+  \vspace{-0.6em} 
+  \include{ins}
+}
+\headerbox{Arbres biplans}{name=box_biplan,column=1, row=0}{
+  \vspace{-0.6em} 
+  \include{box_biplan}
+}
+\headerbox{Une involution sur les mots tassés}{name=involution,span=2,column=1,below=box_biplan}{
+  \vspace{-0.6em} 
+  \include{involution}
+}
+\headerbox{Bases de $\WQSym$ et $\WQSym^*$}{name=bases,column=2,row=0, above=involution}{
+  \vspace{-0.6em} 
+  \include{bases}
+}
+\headerbox{Ouvertures}{name=ouvertures,column=1,below=involution,above=bottom}{
+  \vspace{-0.6em} 
+  \include{ouvertures}
+}
+\headerbox{Références}{name=references,column=2,below=involution}{
+  \include{references}
+}
+\headerbox{Remerciements}{name=acknowledgements,column=2,below=references,above=bottom}{
+  \vspace{-0.6em} 
+  \include{acknowledgements}
+}
+\end{poster}
+\end{document}
