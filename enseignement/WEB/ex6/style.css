@@ -1,0 +1,3 @@
+p[title*="kiwi"] + p > strong.info{
+   color:red;
+}

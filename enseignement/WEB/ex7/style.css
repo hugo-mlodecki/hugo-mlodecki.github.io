@@ -1,0 +1,3 @@
+form#contact[action="destination.php"] > p > label[for="kiwi"] + #kiwi[type="text"]{
+   color:red;
+}
